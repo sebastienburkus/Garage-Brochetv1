@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garage Brochet — Mécanique & entretien auto à Carvin | Prise de RDV en ligne</title>
+<meta name="description" content="Garage Brochet à Carvin (62220) : entretien, vidange, freinage, pneus, diagnostic, climatisation. Prenez rendez-vous en ligne en 1 minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --asphalte:#16181b; --asphalte-2:#22252a; --gris:#5d636b; --ligne:#d9d4ca;
+    --papier:#f3efe7; --blanc:#fffdf9; --jaune:#f5b700; --jaune-fonce:#d99e00; --rouge:#c8102e;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Barlow', system-ui, sans-serif; background:var(--papier); color:var(--asphalte); line-height:1.6; font-size:17px; }
+  h1, h2, h3, .titre { font-family:'Barlow Condensed', 'Arial Narrow', sans-serif; text-transform:uppercase; letter-spacing:.5px; line-height:1.05; }
+  a { color:inherit; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 22px; }
+
+  /* Bandeau prototype */
+  .proto { background:var(--jaune); color:var(--asphalte); text-align:center; font-size:13px; font-weight:600; padding:6px 12px; letter-spacing:.3px; }
+
+  /* En-tête */
+  header { background:var(--asphalte); color:#fff; position:sticky; top:0; z-index:20; border-bottom:3px solid var(--jaune); }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; height:68px; gap:20px; }
+  .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo-mark { width:38px; height:38px; background:var(--jaune); color:var(--asphalte); display:grid; place-items:center;
+               font-family:'Barlow Condensed'; font-weight:800; font-size:24px; clip-path:polygon(0 0,100% 0,100% 75%,75% 100%,0 100%); }
+  .logo-txt { font-family:'Barlow Condensed'; font-weight:800; font-size:24px; text-transform:uppercase; letter-spacing:1px; }
+  .logo-txt small { display:block; font-size:12px; font-weight:600; color:var(--jaune); letter-spacing:2px; margin-top:-3px; }
+  nav { display:flex; gap:26px; }
+  nav a { text-decoration:none; font-weight:500; font-size:15px; opacity:.85; }
+  nav a:hover { opacity:1; color:var(--jaune); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--jaune); color:var(--asphalte);
+         font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; letter-spacing:.8px; font-size:18px;
+         padding:12px 22px; border:none; cursor:pointer; text-decoration:none; transition:background .15s, transform .15s; }
+  .btn:hover { background:var(--jaune-fonce); transform:translateY(-1px); }
+  .btn-ghost { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.35); }
+  .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:#fff; }
+  .tel-head { white-space:nowrap; }
+
+  /* Hero */
+  .hero { background:var(--asphalte); color:#fff; position:relative; overflow:hidden; }
+  .hero::before { content:""; position:absolute; inset:0;
+    background:repeating-linear-gradient(-45deg, transparent 0 22px, rgba(255,255,255,.025) 22px 44px); }
+  .hero .wrap { position:relative; display:grid; grid-template-columns:1.25fr .9fr; gap:50px; padding-top:80px; padding-bottom:90px; align-items:center; }
+  .kicker { display:inline-block; font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; letter-spacing:3px;
+            font-size:15px; color:var(--jaune); margin-bottom:16px; }
+  .hero h1 { font-size:clamp(46px, 6.5vw, 84px); font-weight:800; }
+  .hero h1 em { font-style:normal; color:var(--jaune); }
+  .hero p.lead { font-size:19px; color:#c9ccd1; margin:22px 0 32px; max-width:540px; }
+  .hero .actions { display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-card { background:var(--asphalte-2); border:1px solid #33373e; padding:28px; position:relative; }
+  .hero-card::after { content:""; position:absolute; top:-1px; right:-1px; width:60px; height:6px; background:var(--jaune); }
+  .hero-card h3 { font-size:22px; color:var(--jaune); margin-bottom:14px; }
+  .horaires-mini { list-style:none; font-size:15px; }
+  .horaires-mini li { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed #3a3f47; }
+  .horaires-mini li span:last-child { color:#fff; font-weight:600; }
+  .horaires-mini li.ferme span:last-child { color:#8b9099; font-weight:400; }
+  .statut { display:inline-flex; align-items:center; gap:8px; margin-top:16px; font-size:14px; font-weight:600; }
+  .statut i { width:9px; height:9px; border-radius:50%; background:#8b9099; }
+  .statut.ouvert i { background:#3ccf6e; box-shadow:0 0 0 4px rgba(60,207,110,.2); }
+
+  /* Bande de confiance */
+  .confiance { background:var(--jaune); }
+  .confiance .wrap { display:grid; grid-template-columns:repeat(4,1fr); }
+  .confiance div { padding:22px 10px; text-align:center; border-right:1px solid rgba(0,0,0,.12); }
+  .confiance div:last-child { border-right:none; }
+  .confiance strong { display:block; font-family:'Barlow Condensed'; font-size:30px; font-weight:800; line-height:1; }
+  .confiance span { font-size:14px; font-weight:600; }
+
+  /* Sections */
+  section { padding:90px 0; }
+  .entete-section { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:44px; flex-wrap:wrap; }
+  .entete-section h2 { font-size:clamp(36px, 4.5vw, 54px); font-weight:800; }
+  .entete-section h2 .num { color:var(--jaune-fonce); }
+  .entete-section p { max-width:440px; color:var(--gris); }
+
+  /* Prestations */
+  .grille { display:grid; grid-template-columns:repeat(3,1fr); border-top:2px solid var(--asphalte); border-left:1px solid var(--ligne); }
+  .presta { background:var(--blanc); padding:30px 26px; border-right:1px solid var(--ligne); border-bottom:1px solid var(--ligne); transition:background .15s; }
+  .presta:hover { background:#fff; }
+  .presta .ico { font-size:30px; margin-bottom:12px; }
+  .presta h3 { font-size:25px; font-weight:700; margin-bottom:8px; }
+  .presta p { color:var(--gris); font-size:15.5px; }
+  .presta .px { margin-top:14px; font-family:'Barlow Condensed'; font-weight:700; font-size:17px; text-transform:uppercase; letter-spacing:.5px; }
+  .presta .px b { color:var(--rouge); }
+
+  /* Pourquoi */
+  .pourquoi { background:var(--blanc); border-top:1px solid var(--ligne); border-bottom:1px solid var(--ligne); }
+  .atouts { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
+  .atout { border-left:4px solid var(--jaune); padding-left:18px; }
+  .atout h3 { font-size:23px; margin-bottom:6px; }
+  .atout p { font-size:15.5px; color:var(--gris); }
+
+  /* RDV */
+  .rdv { background:var(--asphalte); color:#fff; }
+  .rdv .entete-section p { color:#a9aeb6; }
+  .rdv-grid { display:grid; grid-template-columns:1fr 300px; gap:40px; align-items:start; }
+  form { background:var(--blanc); color:var(--asphalte); padding:36px; position:relative; }
+  form::before { content:""; position:absolute; top:0; left:0; right:0; height:6px;
+    background:repeating-linear-gradient(-45deg, var(--jaune) 0 14px, var(--asphalte) 14px 28px); }
+  fieldset { border:none; margin-bottom:30px; }
+  legend { font-family:'Barlow Condensed'; font-weight:800; text-transform:uppercase; font-size:24px; letter-spacing:.5px;
+           display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  legend .etape { background:var(--asphalte); color:var(--jaune); width:32px; height:32px; display:grid; place-items:center; font-size:19px; }
+  .champs { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .champs .full { grid-column:1 / -1; }
+  label.lbl { display:block; font-size:14px; font-weight:600; margin-bottom:6px; }
+  label.lbl .req { color:var(--rouge); }
+  input[type=text], input[type=tel], input[type=email], input[type=date], input[type=number], select, textarea {
+    width:100%; padding:13px 14px; font:inherit; font-size:16px; border:1.5px solid #cfc9bd; background:#fff; color:var(--asphalte); border-radius:0; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--asphalte); box-shadow:0 0 0 3px rgba(245,183,0,.45); }
+  textarea { min-height:100px; resize:vertical; }
+  .aide { font-size:13px; color:var(--gris); margin-top:5px; }
+  .erreur { font-size:13px; color:var(--rouge); margin-top:5px; font-weight:600; display:none; }
+
+  .choix { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  .choix label { cursor:pointer; }
+  .choix input { position:absolute; opacity:0; pointer-events:none; }
+  .choix .tuile { display:flex; flex-direction:column; gap:4px; height:100%; padding:14px 12px; border:1.5px solid #cfc9bd; background:#fff;
+                  font-weight:600; font-size:15px; line-height:1.25; transition:all .12s; }
+  .choix .tuile span { font-size:22px; }
+  .choix label:hover .tuile { border-color:var(--asphalte); }
+  .choix input:checked + .tuile { background:var(--asphalte); color:#fff; border-color:var(--asphalte); box-shadow:inset 0 -4px 0 var(--jaune); }
+  .choix input:focus-visible + .tuile { box-shadow:0 0 0 3px rgba(245,183,0,.6); }
+
+  .creneaux { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .creneaux .tuile { flex-direction:row; align-items:center; justify-content:center; padding:13px; }
+
+  .case { display:flex; gap:10px; align-items:flex-start; font-size:15px; cursor:pointer; }
+  .case input { width:20px; height:20px; margin-top:2px; accent-color:var(--asphalte); flex-shrink:0; }
+  .cache { position:absolute; left:-9999px; }
+
+  .envoi { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; border-top:1px solid var(--ligne); padding-top:24px; }
+  .envoi .btn { font-size:21px; padding:16px 34px; }
+  .envoi .btn[disabled] { opacity:.6; cursor:wait; }
+  .envoi small { color:var(--gris); font-size:13px; max-width:340px; }
+
+  #merci { display:none; background:var(--blanc); color:var(--asphalte); padding:50px 36px; text-align:center; border-top:6px solid #3ccf6e; }
+  #merci .big { font-size:56px; }
+  #merci h3 { font-size:38px; margin:10px 0; }
+  #merci p { color:var(--gris); max-width:480px; margin:0 auto 8px; }
+  #recap { display:inline-block; text-align:left; background:var(--papier); padding:16px 22px; margin:18px 0; font-size:15px; }
+
+  .aside-rdv { position:sticky; top:96px; }
+  .aside-rdv .bloc { border:1px solid #33373e; padding:24px; margin-bottom:16px; background:var(--asphalte-2); }
+  .aside-rdv h3 { font-size:21px; color:var(--jaune); margin-bottom:10px; }
+  .aside-rdv ol { padding-left:20px; font-size:15px; color:#c9ccd1; }
+  .aside-rdv ol li { margin-bottom:8px; }
+  .aside-rdv .tel { font-family:'Barlow Condensed'; font-size:32px; font-weight:800; color:#fff; text-decoration:none; display:block; }
+
+  /* Infos pratiques */
+  .infos { display:grid; grid-template-columns:1fr 1fr; gap:0; border:2px solid var(--asphalte); }
+  .infos > div { padding:36px; background:var(--blanc); }
+  .infos > div + div { border-left:2px solid var(--asphalte); }
+  .infos h3 { font-size:28px; margin-bottom:14px; }
+  .horaires { width:100%; border-collapse:collapse; font-size:16px; }
+  .horaires td { padding:10px 0; border-bottom:1px dashed var(--ligne); }
+  .horaires td:last-child { text-align:right; font-weight:600; }
+  .horaires tr.aujourdhui td { color:var(--rouge); }
+  .carte-zone { background:var(--asphalte) !important; color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
+  .carte-zone p { color:#c9ccd1; }
+  .adresse { font-family:'Barlow Condensed'; font-size:30px; font-weight:700; text-transform:uppercase; line-height:1.1; margin:8px 0 18px; color:#fff; }
+  .note { font-size:13px; color:#8b9099; margin-top:14px; }
+
+  footer { background:#0d0e10; color:#8b9099; padding:40px 0; font-size:14px; }
+  footer .wrap { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  footer strong { color:#fff; font-family:'Barlow Condensed'; font-size:20px; text-transform:uppercase; letter-spacing:1px; }
+
+  .mobile-cta { display:none; }
+
+  @media (max-width: 960px) {
+    nav { display:none; }
+    .hero .wrap { grid-template-columns:1fr; padding-top:56px; padding-bottom:60px; }
+    .grille { grid-template-columns:1fr 1fr; }
+    .atouts { grid-template-columns:1fr 1fr; }
+    .rdv-grid { grid-template-columns:1fr; }
+    .aside-rdv { position:static; }
+    .choix { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    body { font-size:16px; padding-bottom:64px; }
+    section { padding:64px 0; }
+    .tel-head { display:none; }
+    .confiance .wrap { grid-template-columns:1fr 1fr; }
+    .confiance div:nth-child(2) { border-right:none; }
+    .confiance div:nth-child(-n+2) { border-bottom:1px solid rgba(0,0,0,.12); }
+    .grille, .atouts, .champs, .infos { grid-template-columns:1fr; }
+    .infos > div + div { border-left:none; border-top:2px solid var(--asphalte); }
+    form { padding:26px 18px; }
+    .envoi .btn { width:100%; }
+    .mobile-cta { display:grid; grid-template-columns:1fr 1fr; position:fixed; bottom:0; left:0; right:0; z-index:30; }
+    .mobile-cta a { padding:18px; text-align:center; font-family:'Barlow Condensed'; font-weight:700; text-transform:uppercase; font-size:18px; text-decoration:none; }
+    .mobile-cta a:first-child { background:var(--asphalte); color:#fff; }
+    .mobile-cta a:last-child { background:var(--jaune); color:var(--asphalte); }
+  }
+</style>
+</head>
+<body>
+
+<div class="proto">Prototype — maquette de démonstration. Coordonnées et tarifs à valider avec le garage.</div>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Garage Brochet, accueil">
+      <span class="logo-mark">B</span>
+      <span class="logo-txt">Garage Brochet<small>Carvin · 62</small></span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <a href="#prestations">Prestations</a>
+      <a href="#pourquoi">Le garage</a>
+      <a href="#infos">Horaires & accès</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <a href="tel:+33300000000" class="btn btn-ghost tel-head">📞 03 21 XX XX XX</a>
+      <a href="#rdv" class="btn">Prendre RDV</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <div>
+        <span class="kicker">Mécanique · Entretien · Diagnostic</span>
+        <h1>Votre garage<br>de confiance<br>à <em>Carvin</em>.</h1>
+        <p class="lead">Entretien, réparation et diagnostic toutes marques. Un devis clair avant chaque intervention, et votre rendez-vous réservé en ligne en moins d'une minute, même le soir.</p>
+        <div class="actions">
+          <a href="#rdv" class="btn">Réserver mon créneau →</a>
+          <a href="#prestations" class="btn btn-ghost">Voir les prestations</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Horaires d'ouverture">
+        <h3>Horaires d'ouverture</h3>
+        <ul class="horaires-mini">
+          <li><span>Lundi – Vendredi</span><span>8h00 – 12h00 · 14h00 – 18h30</span></li>
+          <li><span>Samedi</span><span>8h00 – 12h00</span></li>
+          <li class="ferme"><span>Dimanche</span><span>Fermé</span></li>
+        </ul>
+        <div class="statut" id="statut"><i></i><span>…</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="confiance">
+    <div class="wrap">
+      <div><strong>Toutes</strong><span>marques & modèles</span></div>
+      <div><strong>Devis</strong><span>gratuit avant travaux</span></div>
+      <div><strong>RDV</strong><span>en ligne 24h/24</span></div>
+      <div><strong>Pièces</strong><span>qualité d'origine</span></div>
+    </div>
+  </div>
+
+  <section id="prestations">
+    <div class="wrap">
+      <div class="entete-section">
+        <h2><span class="num">01 /</span> Nos prestations</h2>
+        <p>Du simple entretien à la panne la plus capricieuse, nos mécaniciens s'occupent de votre véhicule comme du leur.</p>
+      </div>
+      <div class="grille">
+        <article class="presta">
+          <div class="ico">🛢️</div>
+          <h3>Vidange & entretien</h3>
+          <p>Révision selon le carnet constructeur, filtres, niveaux. Votre garantie constructeur est préservée.</p>
+          <div class="px">À partir de <b>XX €</b></div>
+        </article>
+        <article class="presta">
+          <div class="ico">🛑</div>
+          <h3>Freinage</h3>
+          <p>Plaquettes, disques, liquide de frein. Contrôle gratuit de l'usure au moindre doute.</p>
+          <div class="px">Contrôle <b>offert</b></div>
+        </article>
+        <article class="presta">
+          <div class="ico">🛞</div>
+          <h3>Pneumatiques</h3>
+          <p>Montage, équilibrage, parallélisme. Pneus été, hiver et 4 saisons sur commande.</p>
+          <div class="px">Sur <b>devis</b></div>
+        </article>
+        <article class="presta">
+          <div class="ico">💡</div>
+          <h3>Diagnostic électronique</h3>
+          <p>Voyant allumé au tableau de bord ? Lecture des codes défaut et recherche de panne précise.</p>
+          <div class="px">À partir de <b>XX €</b></div>
+        </article>
+        <article class="presta">
+          <div class="ico">❄️</div>
+          <h3>Climatisation</h3>
+          <p>Recharge, contrôle d'étanchéité et désinfection du circuit pour un air sain.</p>
+          <div class="px">À partir de <b>XX €</b></div>
+        </article>
+        <article class="presta">
+          <div class="ico">⚙️</div>
+          <h3>Distribution & embrayage</h3>
+          <p>Kit de distribution, pompe à eau, embrayage. Les grosses interventions, faites dans les règles.</p>
+          <div class="px">Sur <b>devis</b></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="pourquoi" class="pourquoi">
+    <div class="wrap">
+      <div class="entete-section">
+        <h2><span class="num">02 /</span> Pourquoi nous ?</h2>
+        <p>Un garage de proximité, avec des gens qui vous connaissent et vous expliquent ce qu'ils font.</p>
+      </div>
+      <div class="atouts">
+        <div class="atout"><h3>Transparence</h3><p>Un devis détaillé avant toute intervention. Aucun travail supplémentaire sans votre accord.</p></div>
+        <div class="atout"><h3>Rapidité</h3><p>Créneaux réservés en ligne : votre voiture est prise en charge à l'heure prévue.</p></div>
+        <div class="atout"><h3>Savoir-faire</h3><p>Des mécaniciens expérimentés, formés aux motorisations récentes, hybrides comprises.</p></div>
+        <div class="atout"><h3>Proximité</h3><p>À Carvin, au service des automobilistes du secteur Carvin, Libercourt, Oignies, Courrières…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rdv" class="rdv">
+    <div class="wrap">
+      <div class="entete-section">
+        <h2><span class="num">03 /</span> Prendre rendez-vous</h2>
+        <p>Choisissez votre prestation et un créneau. Nous vous confirmons le rendez-vous par téléphone ou SMS dans la journée.</p>
+      </div>
+
+      <div class="rdv-grid">
+        <div>
+          <form name="rendez-vous" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="form-rdv" novalidate>
+            <input type="hidden" name="form-name" value="rendez-vous">
+            <input type="hidden" name="subject" value="Nouvelle demande de RDV — Garage Brochet">
+            <p class="cache"><label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+            <fieldset>
+              <legend><span class="etape">1</span> La prestation</legend>
+              <div class="choix" role="radiogroup" aria-label="Type de prestation">
+                <label><input type="radio" name="prestation" value="Vidange / Entretien" required><span class="tuile"><span>🛢️</span>Vidange / Entretien</span></label>
+                <label><input type="radio" name="prestation" value="Freinage"><span class="tuile"><span>🛑</span>Freinage</span></label>
+                <label><input type="radio" name="prestation" value="Pneus"><span class="tuile"><span>🛞</span>Pneus</span></label>
+                <label><input type="radio" name="prestation" value="Diagnostic / Voyant"><span class="tuile"><span>💡</span>Diagnostic / Voyant</span></label>
+                <label><input type="radio" name="prestation" value="Climatisation"><span class="tuile"><span>❄️</span>Climatisation</span></label>
+                <label><input type="radio" name="prestation" value="Distribution / Embrayage"><span class="tuile"><span>⚙️</span>Distribution / Embrayage</span></label>
+                <label><input type="radio" name="prestation" value="Pré-contrôle technique"><span class="tuile"><span>📋</span>Pré-contrôle technique</span></label>
+                <label><input type="radio" name="prestation" value="Autre / Je ne sais pas"><span class="tuile"><span>❓</span>Autre / Je ne sais pas</span></label>
+              </div>
+              <div class="erreur" id="err-prestation">Choisissez une prestation.</div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="etape">2</span> Le véhicule</legend>
+              <div class="champs">
+                <div>
+                  <label class="lbl" for="vehicule">Marque et modèle <span class="req">*</span></label>
+                  <input id="vehicule" name="vehicule" type="text" placeholder="Ex. : Peugeot 208" required>
+                </div>
+                <div>
+                  <label class="lbl" for="immat">Immatriculation</label>
+                  <input id="immat" name="immatriculation" type="text" placeholder="AB-123-CD" maxlength="12" style="text-transform:uppercase">
+                </div>
+                <div>
+                  <label class="lbl" for="km">Kilométrage approximatif</label>
+                  <input id="km" name="kilometrage" type="number" min="0" step="1000" placeholder="Ex. : 85000" inputmode="numeric">
+                </div>
+                <div>
+                  <label class="lbl" for="energie">Motorisation</label>
+                  <select id="energie" name="motorisation">
+                    <option value="">—</option>
+                    <option>Essence</option>
+                    <option>Diesel</option>
+                    <option>Hybride</option>
+                    <option>Électrique</option>
+                    <option>GPL / Éthanol</option>
+                  </select>
+                </div>
+                <div class="full">
+                  <label class="lbl" for="message">Décrivez le besoin ou le symptôme</label>
+                  <textarea id="message" name="message" placeholder="Ex. : bruit au freinage côté avant droit depuis une semaine…"></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="etape">3</span> Date & créneau</legend>
+              <div class="champs">
+                <div>
+                  <label class="lbl" for="date">Date souhaitée <span class="req">*</span></label>
+                  <input id="date" name="date_souhaitee" type="date" required>
+                  <div class="aide" id="aide-date">Du lundi au samedi (samedi : matin uniquement).</div>
+                  <div class="erreur" id="err-date"></div>
+                </div>
+                <div>
+                  <span class="lbl">Créneau de dépôt <span class="req">*</span></span>
+                  <div class="choix creneaux" role="radiogroup" aria-label="Créneau">
+                    <label><input type="radio" name="creneau" value="Matin (8h–12h)" required><span class="tuile">☀️ Matin</span></label>
+                    <label id="lbl-aprem"><input type="radio" name="creneau" value="Après-midi (14h–18h30)"><span class="tuile">🌇 Après-midi</span></label>
+                  </div>
+                  <div class="erreur" id="err-creneau">Choisissez un créneau.</div>
+                </div>
+                <div class="full">
+                  <label class="case"><input type="checkbox" name="vehicule_pret" value="Oui"> J'aurais besoin d'un véhicule de prêt (sous réserve de disponibilité)</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend><span class="etape">4</span> Vos coordonnées</legend>
+              <div class="champs">
+                <div>
+                  <label class="lbl" for="nom">Nom et prénom <span class="req">*</span></label>
+                  <input id="nom" name="nom" type="text" autocomplete="name" required>
+                </div>
+                <div>
+                  <label class="lbl" for="tel">Téléphone <span class="req">*</span></label>
+                  <input id="tel" name="telephone" type="tel" autocomplete="tel" placeholder="06 00 00 00 00" required>
+                  <div class="erreur" id="err-tel">Numéro de téléphone invalide.</div>
+                </div>
+                <div class="full">
+                  <label class="lbl" for="email">Email (pour recevoir la confirmation)</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr">
+                </div>
+                <div class="full">
+                  <label class="case"><input type="checkbox" name="consentement" value="Oui" required> J'accepte que le Garage Brochet utilise ces informations pour me recontacter au sujet de ce rendez-vous. <span class="req">*</span></label>
+                  <div class="erreur" id="err-consent">Votre accord est nécessaire pour traiter la demande.</div>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="envoi">
+              <small>La demande est confirmée par le garage dans la journée (jours ouvrés). Le créneau peut être ajusté si l'atelier est complet.</small>
+              <button type="submit" class="btn" id="btn-envoi">Envoyer ma demande →</button>
+            </div>
+            <div class="erreur" id="err-envoi" style="margin-top:14px">L'envoi a échoué. Réessayez ou appelez-nous directement.</div>
+          </form>
+
+          <div id="merci" role="status" aria-live="polite">
+            <div class="big">✅</div>
+            <h3>Demande bien reçue !</h3>
+            <p>Merci, nous vous rappelons dans la journée pour confirmer votre rendez-vous.</p>
+            <div id="recap"></div>
+            <p><a href="#rdv" id="nouvelle">Faire une autre demande</a></p>
+          </div>
+        </div>
+
+        <aside class="aside-rdv">
+          <div class="bloc">
+            <h3>Comment ça marche ?</h3>
+            <ol>
+              <li>Vous envoyez votre demande en ligne.</li>
+              <li>Le garage vous rappelle pour confirmer et, si besoin, établir un devis.</li>
+              <li>Vous déposez le véhicule au créneau prévu.</li>
+            </ol>
+          </div>
+          <div class="bloc">
+            <h3>Urgence ? Appelez-nous</h3>
+            <a class="tel" href="tel:+33300000000">03 21 XX XX XX</a>
+            <p style="font-size:14px;color:#a9aeb6;margin-top:6px">Aux heures d'ouverture.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="infos">
+    <div class="wrap">
+      <div class="entete-section">
+        <h2><span class="num">04 /</span> Horaires & accès</h2>
+      </div>
+      <div class="infos">
+        <div>
+          <h3>Horaires</h3>
+          <table class="horaires" id="table-horaires">
+            <tr data-j="1"><td>Lundi</td><td>8h00–12h00 · 14h00–18h30</td></tr>
+            <tr data-j="2"><td>Mardi</td><td>8h00–12h00 · 14h00–18h30</td></tr>
+            <tr data-j="3"><td>Mercredi</td><td>8h00–12h00 · 14h00–18h30</td></tr>
+            <tr data-j="4"><td>Jeudi</td><td>8h00–12h00 · 14h00–18h30</td></tr>
+            <tr data-j="5"><td>Vendredi</td><td>8h00–12h00 · 14h00–18h30</td></tr>
+            <tr data-j="6"><td>Samedi</td><td>8h00–12h00</td></tr>
+            <tr data-j="0"><td>Dimanche</td><td>Fermé</td></tr>
+          </table>
+        </div>
+        <div class="carte-zone">
+          <div>
+            <h3 style="color:var(--jaune)">Nous trouver</h3>
+            <div class="adresse">[Adresse du garage]<br>62220 Carvin</div>
+            <p>Parking client devant l'atelier. Accès facile depuis l'A1 et le centre de Carvin.</p>
+          </div>
+          <div>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Garage+Brochet+Carvin" target="_blank" rel="noopener">Itinéraire Google Maps ↗</a>
+            <p class="note">Adresse, horaires et téléphone sont des valeurs d'exemple à remplacer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Garage Brochet</strong><br>Mécanique automobile toutes marques · Carvin (62220)</div>
+    <div>© <span id="annee"></span> Garage Brochet · Mentions légales · Politique de confidentialité</div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a href="tel:+33300000000">📞 Appeler</a>
+  <a href="#rdv">Prendre RDV</a>
+</div>
+
+<script>
+(function () {
+  // Horaires : 0 = dimanche … 6 = samedi ; plages en minutes
+  var PLAGES = {
+    1: [[480,720],[840,1110]], 2: [[480,720],[840,1110]], 3: [[480,720],[840,1110]],
+    4: [[480,720],[840,1110]], 5: [[480,720],[840,1110]], 6: [[480,720]], 0: []
+  };
+  var now = new Date();
+  var jour = now.getDay(), min = now.getHours() * 60 + now.getMinutes();
+  var ouvert = PLAGES[jour].some(function (p) { return min >= p[0] && min < p[1]; });
+  var statut = document.getElementById('statut');
+  statut.classList.toggle('ouvert', ouvert);
+  statut.querySelector('span').textContent = ouvert ? 'Ouvert en ce moment' : 'Fermé actuellement — réservez en ligne';
+  var ligne = document.querySelector('#table-horaires tr[data-j="' + jour + '"]');
+  if (ligne) ligne.classList.add('aujourdhui');
+  document.getElementById('annee').textContent = now.getFullYear();
+
+  // Date : à partir de demain, max 3 mois
+  var form = document.getElementById('form-rdv');
+  var date = document.getElementById('date');
+  function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  var demain = new Date(now); demain.setDate(now.getDate() + 1);
+  var max = new Date(now); max.setMonth(now.getMonth() + 3);
+  date.min = iso(demain); date.max = iso(max);
+
+  var aprem = document.getElementById('lbl-aprem');
+  var aprInput = aprem.querySelector('input');
+  function jourChoisi() {
+    if (!date.value) return null;
+    var p = date.value.split('-');
+    return new Date(+p[0], +p[1] - 1, +p[2]).getDay();
+  }
+  date.addEventListener('change', function () {
+    var j = jourChoisi();
+    var samedi = j === 6;
+    aprInput.disabled = samedi;
+    aprem.style.opacity = samedi ? '.4' : '1';
+    if (samedi && aprInput.checked) aprInput.checked = false;
+    validerDate();
+  });
+
+  function montrer(id, ok, msg) {
+    var el = document.getElementById(id);
+    if (msg) el.textContent = msg;
+    el.style.display = ok ? 'none' : 'block';
+    return ok;
+  }
+  function validerDate() {
+    if (!date.value) return montrer('err-date', false, 'Choisissez une date.');
+    if (date.value < date.min || date.value > date.max) return montrer('err-date', false, 'Choisissez une date entre demain et les 3 prochains mois.');
+    if (jourChoisi() === 0) return montrer('err-date', false, 'Le garage est fermé le dimanche.');
+    return montrer('err-date', true);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    ok = montrer('err-prestation', !!form.querySelector('input[name=prestation]:checked')) && ok;
+    ok = validerDate() && ok;
+    ok = montrer('err-creneau', !!form.querySelector('input[name=creneau]:checked')) && ok;
+    ok = montrer('err-tel', /^[+\d][\d .\-]{8,}$/.test(form.telephone.value.trim())) && ok;
+    ok = montrer('err-consent', form.consentement.checked) && ok;
+    ['vehicule', 'nom', 'email'].forEach(function (n) {
+      var el = form[n];
+      var valide = el.checkValidity();
+      el.style.borderColor = valide ? '' : 'var(--rouge)';
+      ok = valide && ok;
+    });
+    if (!ok) {
+      var premier = form.querySelector('.erreur[style*="block"], [style*="--rouge"]');
+      if (premier) premier.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var btn = document.getElementById('btn-envoi');
+    btn.disabled = true; btn.textContent = 'Envoi…';
+    document.getElementById('err-envoi').style.display = 'none';
+    var data = new FormData(form);
+    if (data.get('immatriculation')) data.set('immatriculation', data.get('immatriculation').toUpperCase());
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      var d = new Date(date.value + 'T12:00:00');
+      var dateTxt = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+      var recap = document.getElementById('recap');
+      recap.innerHTML = '';
+      [['Prestation', data.get('prestation')], ['Véhicule', data.get('vehicule')], ['Date', dateTxt + ' — ' + data.get('creneau')]]
+        .forEach(function (l) {
+          var div = document.createElement('div');
+          var b = document.createElement('strong'); b.textContent = l[0] + ' : ';
+          div.appendChild(b); div.appendChild(document.createTextNode(l[1]));
+          recap.appendChild(div);
+        });
+      form.style.display = 'none';
+      document.getElementById('merci').style.display = 'block';
+      document.getElementById('rdv').scrollIntoView({ behavior: 'smooth' });
+    }).catch(function () {
+      document.getElementById('err-envoi').style.display = 'block';
+    }).finally(function () {
+      btn.disabled = false; btn.textContent = 'Envoyer ma demande →';
+    });
+  });
+
+  document.getElementById('nouvelle').addEventListener('click', function () {
+    form.reset();
+    aprInput.disabled = false; aprem.style.opacity = '1';
+    form.style.display = 'block';
+    document.getElementById('merci').style.display = 'none';
+  });
+})();
+</script>
+</body>
+</html>

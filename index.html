@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garage Brochet — Diagnostic gratuit : 30 min pour trouver vos économies</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif; }
+  body { background:#0f1b2d; color:#f4f6f8; line-height:1.6; }
+  .container { max-width:720px; margin:0 auto; padding:24px 20px 60px; }
+  .badge { display:inline-block; background:#ff7a1a; color:#fff; font-size:13px; font-weight:bold;
+           padding:6px 14px; border-radius:20px; letter-spacing:1px; text-transform:uppercase; }
+  h1 { font-size:30px; margin:18px 0 10px; line-height:1.25; }
+  h1 span { color:#ff7a1a; }
+  h2 { font-size:22px; margin:40px 0 12px; color:#ffb27a; }
+  p { margin:10px 0; color:#d7dee8; font-size:16px; }
+  .sous-titre { font-size:17px; color:#aeb9c8; }
+  .carte { background:#182a42; border:1px solid #2a3f5c; border-radius:14px; padding:20px; margin:16px 0; }
+  .carte h3 { font-size:17px; margin-bottom:6px; }
+  .carte p { font-size:15px; margin:4px 0; }
+  .check { color:#4ade80; font-weight:bold; }
+  .prix { background:#12233a; border:2px solid #ff7a1a; border-radius:14px; padding:22px; margin:24px 0; text-align:center; }
+  .prix .gros { font-size:26px; font-weight:bold; color:#fff; }
+  .prix .petit { font-size:14px; color:#aeb9c8; margin-top:6px; }
+  form { background:#182a42; border:1px solid #2a3f5c; border-radius:14px; padding:24px; margin-top:16px; }
+  label { display:block; font-size:14px; margin:14px 0 6px; color:#cdd7e3; font-weight:600; }
+  input, select { width:100%; padding:13px 14px; border-radius:8px; border:1px solid #33507a;
+                  background:#0f1b2d; color:#fff; font-size:16px; }
+  input:focus, select:focus { outline:2px solid #ff7a1a; border-color:#ff7a1a; }
+  button { width:100%; margin-top:22px; padding:17px; background:#ff7a1a; color:#fff; border:none;
+           border-radius:10px; font-size:18px; font-weight:bold; cursor:pointer; }
+  button:hover { background:#ff8f3d; }
+  .garantie { text-align:center; font-size:14px; color:#8fa0b5; margin-top:14px; }
+  .urgence { background:#3a1d0e; border:1px solid #ff7a1a; border-radius:10px; padding:14px 18px;
+             margin:20px 0; font-size:15px; color:#ffd9bd; text-align:center; }
+  #merci { display:none; background:#123524; border:1px solid #4ade80; border-radius:14px; padding:30px;
+           text-align:center; margin-top:20px; }
+  #merci h2 { color:#4ade80; margin-top:0; }
+  footer { text-align:center; margin-top:50px; font-size:13px; color:#6b7a90; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <span class="badge">Offre exclusive — Garages indépendants</span>
+  <h1>Monsieur Brochet, votre garage perd de l'argent <span>sans le savoir</span>.</h1>
+  <p class="sous-titre">Appels manqués, pièces en rupture, clients qui ne reviennent pas… Moi, je trouve vos fuites en 30 minutes. Et je ne suis payé que si ça rapporte.</p>
+
+  <div class="urgence">⏰ Lundi, 30 minutes avec moi. Gratuit. Sans engagement. Vous repartez avec au moins 3 économies concrètes — même si on ne travaille jamais ensemble.</div>
+
+  <h2>Ce que je mets en place pour vous</h2>
+
+  <div class="carte">
+    <h3>🌐 Un site avec prise de RDV en ligne</h3>
+    <p>Vos clients réservent seuls, même le soir. <span class="check">✓</span> Fini les appels manqués.</p>
+  </div>
+  <div class="carte">
+    <h3>👥 Un CRM sur mesure (Notion)</h3>
+    <p>Chaque client, chaque véhicule, chaque intervention — tout retrouvé en 2 secondes. <span class="check">✓</span> Plus rien ne se perd.</p>
+  </div>
+  <div class="carte">
+    <h3>📦 Un stock simple</h3>
+    <p>Alertes automatiques avant la rupture. <span class="check">✓</span> Un clic pour sortir une pièce.</p>
+  </div>
+
+  <div class="prix">
+    <div class="gros">Mon tarif : 30% des économies que je vous fais réaliser.</div>
+    <div class="petit">Aucune économie trouvée = vous ne me devez rien. Zéro risque pour vous.<br>
+    Support inclus, même en cas de bug : vous m'appelez, je répare.</div>
+  </div>
+
+  <h2>Réservez votre diagnostic gratuit de lundi</h2>
+  <p>30 minutes, chez vous ou en visio. Remplissez ce formulaire, je vous rappelle dans la journée.</p>
+
+  <form id="formulaire" action="https://formspree.io/f/xqppogel" method="POST">
+    <label for="nom">Votre nom *</label>
+    <input id="nom" name="nom" type="text" placeholder="M. Brochet" required>
+
+    <label for="tel">Téléphone *</label>
+    <input id="tel" name="telephone" type="tel" placeholder="06 00 00 00 00" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="garage.brochet@email.fr">
+
+    <label for="dispo">Le meilleur créneau lundi pour vous appeler *</label>
+    <select id="dispo" name="disponibilite" required>
+      <option value="">Choisissez…</option>
+      <option>Matin (8h–12h)</option>
+      <option>Après-midi (14h–18h)</option>
+      <option>En visio, n'importe quand</option>
+    </select>
+
+    <label for="besoin">Votre plus gros problème aujourd'hui ?</label>
+    <select id="besoin" name="besoin">
+      <option>Appels / RDV manqués</option>
+      <option>Stock / pièces qui manquent</option>
+      <option>Clients qui ne reviennent pas</option>
+      <option>Trop de temps perdu en paperasse</option>
+      <option>Autre</option>
+    </select>
+
+    <button type="submit">👉 Je veux mon diagnostic gratuit lundi</button>
+    <p class="garantie">🔒 Vos données restent entre nous. Aucun spam, jamais.</p>
+  </form>
+
+  <div id="merci">
+    <h2>✅ C'est noté, Monsieur Brochet !</h2>
+    <p>Je vous rappelle dans la journée pour confirmer le créneau de lundi.<br>À très vite.</p>
+  </div>
+
+  <footer>
+    Burkus Consult — Je réduis vos coûts, vous ne payez que sur les résultats.<br>
+    Site + CRM + Stock sur mesure pour les pros qui veulent du simple et du performant.
+  </footer>
+<!-- SECTION CONCEPT SITE RDV -->
+<div class="concept-card" style="
+  background: linear-gradient(135deg, #1a2332 0%, #0f1b2d 100%);
+  border: 2px solid #ff7a1a;
+  border-radius: 16px;
+  padding: 32px 24px;
+  margin: 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+">
+
+  <!-- Badge NOUVEAU -->
+  <span style="
+    position: absolute;
+    top: 12px;
+    right: -35px;
+    background: #ff7a1a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 40px;
+    transform: rotate(45deg);
+  ">NOUVEAU</span>
+
+  <!-- Icône voiture -->
+  <div style="font-size: 48px; margin-bottom: 16px;">🚗</div>
+
+  <!-- Titre accroche -->
+  <h2 style="
+    color: #ff7a1a;
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 700;
+  ">
+    Votre garage en ligne, c'est maintenant !
+  </h2>
+
+  <!-- Phrase d'accroche -->
+  <p style="
+    color: #b8c5d6;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  ">
+    Découvrez notre <strong>plateforme de prise de rendez-vous</strong> en ligne.
+    Réservez votre créneau en 2 clics, 24h/24, sans attente au téléphone.
+  </p>
+
+  <!-- Liste avantages -->
+  <div style="
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: #8a9bb8;
+  ">
+    <span>✅ Disponible 24h/24</span>
+    <span>✅ Confirmation instantanée</span>
+    <span>✅ Rappel automatique</span>
+  </div>
+
+  <!-- BOUTON CLIQUABLE -->
+  <a href="garage.html" style="
+    display: inline-block;
+    background: linear-gradient(90deg, #ff7a1a, #ff9a44);
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 122, 26, 0.3);
+  " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(255,122,26,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(255,122,26,0.3)'">
+    📅 Voir le concept →
+  </a>
+
+</div>
+<!-- FIN SECTION CONCEPT -->
+</div>
+
+<script>
+  document.getElementById('formulaire').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Envoi réel via Formspree (gratuit, 50 envois/mois) — remplace TON_CODE_FORMSPREE
+    fetch(this.action, { method:'POST', body:new FormData(this), headers:{'Accept':'application/json'} })
+      .finally(() => {
+        this.style.display = 'none';
+        document.getElementById('merci').style.display = 'block';
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+  });
+</script>
+</body>
+</html>
